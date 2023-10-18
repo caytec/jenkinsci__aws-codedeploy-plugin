@@ -21,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.file.Files;
 import java.util.UUID;
 
 import com.amazonaws.AmazonServiceException;
@@ -162,7 +163,7 @@ public class AWSClients {
     }
 
     private File createTestFile() throws IOException {
-        File file = File.createTempFile("codedeploy-jenkins-plugin", ".txt");
+        File file = Files.createTempFile("codedeploy-jenkins-plugin", ".txt").toFile();
         file.deleteOnExit();
 
         Writer writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");

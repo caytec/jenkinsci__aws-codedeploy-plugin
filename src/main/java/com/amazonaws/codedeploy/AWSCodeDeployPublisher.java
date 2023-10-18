@@ -62,6 +62,7 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
 import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
@@ -326,7 +327,7 @@ public class AWSCodeDeployPublisher extends Publisher implements SimpleBuildStep
             logger.println("File already exists, overwriting: " + zipFile.getPath());
           }
         } else {
-          zipFile = File.createTempFile(projectName + "-", ".zip");
+          zipFile = Files.createTempFile(projectName + "-", ".zip").toFile();
         }
 
         String key;
